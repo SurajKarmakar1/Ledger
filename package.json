@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.9",
+    "chart.js": "^4.4.0"
+  },
+  "name": "japanese-expense-tracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Japanese-inspired expense tracker with analytics"
+}

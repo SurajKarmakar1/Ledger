@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Expense Tracker</title>
+  </head>
+  <body
+    class="bg-zinc-950 text-zinc-50 font-inter antialiased overflow-x-hidden"
+  >
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 border-b border-zinc-800/50 bg-zinc-950/80 backdrop-blur-xl"
+    >
+      <div class="mx-auto max-w-7xl px-6 py-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <div
+              class="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-50 text-zinc-950"
+            >
+              <span class="font-mono text-sm font-semibold">$</span>
+            </div>
+            <div>
+              <h1 class="text-lg font-semibold tracking-tight">Ledger</h1>
+              <p class="text-xs text-zinc-400">Financial Management System</p>
+            </div>
+          </div>
+          <!-- Theme toggle -->
+
+          <!-- <div class="flex items-center space-x-2">
+            <button
+              id="theme-toggle"
+              class="inline-flex h-9 w-9 items-center justify-center rounded-md border border-zinc-800 bg-transparent text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-50"
+            >
+              <svg
+                class="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                ></path>
+              </svg>
+            </button>
+          </div> -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="mx-auto max-w-7xl px-6 py-8">
+      <!-- Stats Grid -->
+      <div class="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div
+          class="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-all hover:bg-zinc-900/80"
+        >
+          <div class="flex items-center justify-between">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-md bg-red-500/10 text-red-400"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="rounded-full bg-zinc-800 px-2 py-1 text-xs font-medium text-zinc-300"
+              >TOTAL</span
+            >
+          </div>
+          <div class="mt-4">
+            <p class="text-2xl font-bold tracking-tight" id="total-amount">
+              $0
+            </p>
+            <p class="text-sm text-zinc-400">Total Expenses</p>
+          </div>
+        </div>
+
+        <div
+          class="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-all hover:bg-zinc-900/80"
+        >
+          <div class="flex items-center justify-between">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-md bg-blue-500/10 text-blue-400"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="rounded-full bg-zinc-800 px-2 py-1 text-xs font-medium text-zinc-300"
+              >COUNT</span
+            >
+          </div>
+          <div class="mt-4">
+            <p class="text-2xl font-bold tracking-tight" id="transaction-count">
+              0
+            </p>
+            <p class="text-sm text-zinc-400">Transactions</p>
+          </div>
+        </div>
+
+        <div
+          class="group rounded-lg border border-zinc-800 bg-zinc-900/50 p-6 transition-all hover:bg-zinc-900/80"
+        >
+          <div class="flex items-center justify-between">
+            <div
+              class="flex h-10 w-10 items-center justify-center rounded-md bg-emerald-500/10 text-emerald-400"
+            >
+              <svg
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                ></path>
+              </svg>
+            </div>
+            <span
+              class="rounded-full bg-zinc-800 px-2 py-1 text-xs font-medium text-zinc-300"
+              >AVG</span
+            >
+          </div>
+          <div class="mt-4">
+            <p class="text-2xl font-bold tracking-tight" id="average-amount">
+              $0
+            </p>
+            <p class="text-sm text-zinc-400">Average</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Grid -->
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <!-- Add Expense Form -->
+        <div class="lg:col-span-4">
+          <div class="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
+            <div class="mb-6 flex items-center space-x-3">
+              <div
+                class="flex h-8 w-8 items-center justify-center rounded-md bg-zinc-50 text-zinc-950"
+              >
+                <span class="text-sm font-semibold">+</span>
+              </div>
+              <div>
+                <h2 class="font-semibold tracking-tight">Add Expense</h2>
+                <p class="text-xs text-zinc-400">Record new transaction</p>
+              </div>
+            </div>
+
+            <form id="expense-form" class="space-y-4">
+              <div class="space-y-2">
+                <label
+                  for="expense-name"
+                  class="text-sm font-medium text-zinc-200"
+                  >Description</label
+                >
+                <input
+                  type="text"
+                  id="expense-name"
+                  placeholder="Enter expense description"
+                  required
+                  autocomplete="off"
+                  class="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm placeholder:text-zinc-500 focus:border-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-700"
+                />
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="expense-amount"
+                  class="text-sm font-medium text-zinc-200"
+                  >Amount</label
+                >
+                <div class="relative">
+                  <span
+                    class="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-zinc-500"
+                    >$</span
+                  >
+                  <input
+                    type="number"
+                    id="expense-amount"
+                    placeholder="0.00"
+                    required
+                    autocomplete="off"
+                    step="0.01"
+                    class="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 pl-7 pr-3 py-2 text-sm placeholder:text-zinc-500 focus:border-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-700"
+                  />
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <label
+                  for="expense-category"
+                  class="text-sm font-medium text-zinc-200"
+                  >Category</label
+                >
+                <select
+                  id="expense-category"
+                  class="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm focus:border-zinc-700 focus:outline-none focus:ring-1 focus:ring-zinc-700"
+                >
+                  <option value="Food">🍜 Food & Dining</option>
+                  <option value="Transport">🚊 Transportation</option>
+                  <option value="Entertainment">🎮 Entertainment</option>
+                  <option value="Shopping">🛍️ Shopping</option>
+                  <option value="Other">📝 Other</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex h-10 w-full items-center justify-center rounded-md bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 focus:ring-offset-zinc-950"
+              >
+                Add Transaction
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Analytics & History -->
+        <div class="space-y-8 lg:col-span-8">
+          <!-- Chart -->
+          <div class="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
+            <div class="mb-6 flex items-center justify-between">
+              <div>
+                <h2 class="font-semibold tracking-tight">Analytics</h2>
+                <p class="text-xs text-zinc-400">
+                  Expense breakdown and trends
+                </p>
+              </div>
+              <div class="flex space-x-1 rounded-md border border-zinc-800 p-1">
+                <button
+                  class="chart-toggle active rounded px-3 py-1 text-xs font-medium transition-colors"
+                  data-chart="category"
+                >
+                  Category
+                </button>
+                <button
+                  class="chart-toggle rounded px-3 py-1 text-xs font-medium transition-colors"
+                  data-chart="trend"
+                >
+                  Trend
+                </button>
+              </div>
+            </div>
+            <div class="h-64">
+              <canvas id="expense-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Recent Transactions -->
+          <div class="rounded-lg border border-zinc-800 bg-zinc-900/50 p-6">
+            <div class="mb-6 flex items-center justify-between">
+              <div>
+                <h2 class="font-semibold tracking-tight">
+                  Recent Transactions
+                </h2>
+                <p class="text-xs text-zinc-400">Latest expense entries</p>
+              </div>
+              <button
+                id="clear-all"
+                class="text-xs font-medium text-red-400 hover:text-red-300"
+              >
+                Clear All
+              </button>
+            </div>
+            <div
+              id="expense-list"
+              class="space-y-3 max-h-96 overflow-y-auto custom-scrollbar"
+            >
+              <div
+                class="flex flex-col items-center justify-center py-12 text-center"
+              >
+                <div
+                  class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-zinc-800"
+                >
+                  <svg
+                    class="h-6 w-6 text-zinc-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    ></path>
+                  </svg>
+                </div>
+                <p class="text-sm text-zinc-400">No transactions yet</p>
+                <p class="text-xs text-zinc-500">
+                  Add your first expense to get started
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed top-4 right-4 z-50 translate-x-full transition-transform duration-300"
+    >
+      <div
+        class="flex items-center space-x-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 shadow-lg"
+      >
+        <div
+          class="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/10"
+        >
+          <svg
+            class="h-4 w-4 text-emerald-400"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
+          </svg>
+        </div>
+        <span class="text-sm font-medium text-zinc-50"
+          >Transaction added successfully</span
+        >
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-8 text-center">
+      <p class="text-md text-dark-500 font-medium">
+        made with
+        <span class="text-neutral-100 mx-0.5">♥</span>
+        by
+        <a
+          href="https://github.com/SurajKarmakar1"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-white hover:text-slate-600 dark:hover:text-slate-300 transition-colors font-semibold underline"
+        >
+          @SurajKarmakar
+        </a>
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
