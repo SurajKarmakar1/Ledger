@@ -333,35 +333,36 @@
     </main>
 
     <!-- Toast Notification -->
+<!-- Toast Notification -->
+<div
+  id="toast"
+  class="fixed top-4 right-4 z-50 transform transition-transform duration-300 translate-x-full"
+>
+  <div
+    class="flex items-center space-x-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 shadow-lg"
+  >
     <div
-      id="toast"
-      class="fixed top-4 right-4 z-50 translate-x-full transition-transform duration-300"
+      class="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/10"
     >
-      <div
-        class="flex items-center space-x-3 rounded-lg border border-zinc-800 bg-zinc-900 p-4 shadow-lg"
+      <svg
+        class="h-4 w-4 text-emerald-400"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
       >
-        <div
-          class="flex h-8 w-8 items-center justify-center rounded-md bg-emerald-500/10"
-        >
-          <svg
-            class="h-4 w-4 text-emerald-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M5 13l4 4L19 7"
-            ></path>
-          </svg>
-        </div>
-        <span class="text-sm font-medium text-zinc-50"
-          >Transaction added successfully</span
-        >
-      </div>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
+        ></path>
+      </svg>
     </div>
+    <span class="text-sm font-medium text-zinc-50"
+      >Transaction added successfully</span
+    >
+  </div>
+</div>
 
     <!-- Footer -->
     <div class="mt-8 text-center">
