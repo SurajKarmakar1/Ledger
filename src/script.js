@@ -356,18 +356,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    showToast(message) {
-      const toastMessage = this.toast.querySelector("span");
-      if (toastMessage) {
-        toastMessage.textContent = message;
-      }
+showToast(message) {
+  const toastMessage = this.toast.querySelector("span");
+  if (toastMessage) {
+    toastMessage.textContent = message;
+  }
 
-      this.toast.classList.add("toast-show");
-
-      setTimeout(() => {
-        this.toast.classList.remove("toast-show");
-      }, 3000);
-    }
+  // Remove translate-x-full to show toast
+  this.toast.classList.remove("translate-x-full");
+  
+  setTimeout(() => {
+    // Add translate-x-full to hide toast
+    this.toast.classList.add("translate-x-full");
+  }, 3000);
+}
 
     resetForm() {
       this.expenseForm.reset();
